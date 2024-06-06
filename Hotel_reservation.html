@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/Manifest.json"/>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Réservation d'hôtel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cdd4ad;
+        }
+        h1{
+            font-family: Tahoma, sans-serif;
+            font-size: 16px;
+            font-style: italic;
+        }
+        .container {
+            display: flex;
+            max-width: 90%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            flex: 1;
+        }
+        .hotel-image {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        form {
+            width: 100%;
+            max-width: 300px;
+            padding-left: 20px;
+        }
+        input, select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+        input[type="submit"] {
+            background-color: #a84e19;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #af742f;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            form {
+                padding-left: 0;
+            }
+            input, select {
+                width: 100%;
+            }
+        }
+    </style> 
+    <script>
+        window.addEventListener('load',()=> {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <img class="hotel-image" src="photo_hotel.jpg" alt="Découverte de l'hôtel">
+        </div>
+        <div class="content">
+            <h1>Formulaire de réservation à l'hôtel Paradisio</h1>
+            <form form action="traitement_reservation.php" method="post">
+                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="text" name="prenom" placeholder="Prénom" required>
+                <input type="number" name="adulte" placeholder="Nombre d'adultes" required>
+                <input type="number" name="enfant" placeholder="Nombre d'enfants" required>
+                <input type="date" name="date_arrivee" placeholder="Date d'arrivée" required>
+                <input type="date" name="date_depart" placeholder="Date de départ" required>
+                <select name="options">
+                    <option value="aucune">Aucune option</option>
+                    <option value="repas">Repas compris</option>
+                    <option value="location_vehicule">Service de location de véhicule</option>
+                </select>
+                <input type="submit" value="Soumettre la réservation">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

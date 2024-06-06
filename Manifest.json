@@ -1,0 +1,13 @@
+{
+    "name": "Reservation Hotel",
+    "icons": [
+        {
+            "src": "/icons/photo_hotel.jpg",
+            "type": "image/jpg",
+            "sizes": "512x512"
+
+        }
+    ],
+    "start_url": "/?source=pwa",
+    "display": "standalone"
+}
